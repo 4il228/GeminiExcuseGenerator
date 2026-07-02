@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор отмазок</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand': {
+                            '50': '#fcf8ff',
+                            '100': '#f5f2ff',
+                            '200': '#e4e1ee',
+                            '300': '#c7c4d8',
+                            '400': '#777587',
+                            '500': '#464555',
+                            '600': '#1b1b24',
+                            '700': '#302f39',
+                            'primary': '#4f46e5',
+                            'primary-hover': '#4338ca',
+                            'success': '#006c49',
+                            'success-bg': '#6cf8bb',
+                            'warning': '#684000',
+                            'warning-bg': '#ffd4a4',
+                            'error': '#ba1a1a',
+                            'error-bg': '#ffdad6',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'serif': ['Source Serif 4', 'Georgia', 'serif'],
+                    },
+                    borderRadius: {
+                        'sm': '0.125rem',
+                        'DEFAULT': '0.25rem',
+                        'md': '0.375rem',
+                        'lg': '0.5rem',
+                        'xl': '0.75rem',
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px -2px rgba(0,0,0,0.05)',
+                        'dropdown': '0 20px 40px -10px rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital@1&display=swap" rel="stylesheet">
+    <style>
+        .hidden { display: none; }
+        .card-selected {
+            border-color: #4f46e5 !important;
+            background-color: #f5f2ff !important;
+        }
+        .card-selected:hover {
+            border-color: #4338ca !important;
+        }
+    </style>
+</head>
+<body class="bg-brand-50 min-h-screen font-sans">
+    <div class="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-10 py-8 md:py-10">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-3xl md:text-4xl lg:text-[48px] font-bold text-brand-600 tracking-tight leading-tight mb-3">
+                Генератор отмазок
+            </h1>
+            <p class="text-base text-brand-400 font-normal">
+                Выбери ситуацию — получи креативное оправдание
+            </p>
+        </header>
+
+        <!-- Situation Selector Grid -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto mb-10">
+            
+            <!-- Card 1: Late Work -->
+            <button 
+                class="situation-card group relative p-8 rounded-lg border border-brand-300 bg-white text-left transition-all duration-200 hover:border-brand-primary hover:shadow-card focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2"
+                data-situation-id="late_work"
+            >
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-50 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-brand-600 text-lg mb-1">Опоздал на работу</div>
+                        <div class="text-sm text-brand-400 leading-relaxed">Для жестких начальников и утренних пробок</div>
+                    </div>
+                </div>
+            </button>
+
+            <!-- Card 2: Missed Homework -->
+            <button 
+                class="situation-card group relative p-8 rounded-lg border border-brand-300 bg-white text-left transition-all duration-200 hover:border-brand-primary hover:shadow-card focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2"
+                data-situation-id="missed_homework"
+            >
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-50 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-brand-600 text-lg mb-1">Не сделал домашку</div>
+                        <div class="text-sm text-brand-400 leading-relaxed">Когда дедлайн уже стучится в дверь</div>
+                    </div>
+                </div>
+            </button>
+
+            <!-- Card 3: Forgot Birthday -->
+            <button 
+                class="situation-card group relative p-8 rounded-lg border border-brand-300 bg-white text-left transition-all duration-200 hover:border-brand-primary hover:shadow-card focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2"
+                data-situation-id="forgot_birthday"
+            >
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-50 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9V8a2 2 0 00-2-2H10a2 2 0 00-2 2v2h10z"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-brand-600 text-lg mb-1">Забыл день рождения</div>
+                        <div class="text-sm text-brand-400 leading-relaxed">Когда ты виноват, но очень стараешься</div>
+                    </div>
+                </div>
+            </button>
+
+            <!-- Card 4: Dog Ate Code -->
+            <button 
+                class="situation-card group relative p-8 rounded-lg border border-brand-300 bg-white text-left transition-all duration-200 hover:border-brand-primary hover:shadow-card focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2"
+                data-situation-id="dog_ate_code"
+            >
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-lg bg-brand-50 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-semibold text-brand-600 text-lg mb-1">Собака съела код</div>
+                        <div class="text-sm text-brand-400 leading-relaxed">Для программистов с богатым воображением</div>
+                    </div>
+                </div>
+            </button>
+
+        </section>
+
+        <!-- Loader -->
+        <div id="loader" class="hidden max-w-3xl mx-auto">
+            <div class="p-8 rounded-lg border border-brand-300 bg-white shadow-card">
+                <div class="animate-pulse space-y-4">
+                    <div class="h-3 bg-brand-200 rounded w-1/4"></div>
+                    <div class="h-4 bg-brand-200 rounded w-full"></div>
+                    <div class="h-4 bg-brand-200 rounded w-5/6"></div>
+                    <div class="h-4 bg-brand-200 rounded w-2/3"></div>
+                </div>
+                <p class="text-sm text-brand-400 mt-6 text-center">Генерируем отмазку...</p>
+            </div>
+        </div>
+
+        <!-- Result Block -->
+        <div id="result-block" class="hidden max-w-3xl mx-auto">
+            <div class="p-8 rounded-lg border border-brand-300 bg-white shadow-card space-y-6">
+                
+                <!-- Header with Score Badge -->
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-brand-400">
+                        Сгенерированный алиби-текст
+                    </span>
+                    
+                    <!-- Credibility Indicator -->
+                    <div id="score-badge" class="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-emerald-50 text-emerald-700 text-sm font-medium">
+                        <span id="score-dot" class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                        <span id="score-text">87% правдоподобности</span>
+                    </div>
+                </div>
+                
+                <!-- Quote Block -->
+                <div class="border-l-[3px] border-brand-primary pl-6">
+                    <p id="excuse-text" class="text-lg text-brand-600 leading-relaxed font-serif italic">
+                        «Загрузка...»
+                    </p>
+                </div>
+                
+                <!-- Action Panel -->
+                <div class="flex justify-end pt-2 border-t border-brand-200">
+                    <button 
+                        id="copy-btn"
+                        class="inline-flex items-center gap-2 px-6 py-3 rounded bg-brand-primary text-white text-sm font-semibold hover:bg-brand-primary-hover transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2"
+                    >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+                        </svg>
+                        <span>Скопировать отмазку</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const API_URL = '/api/v1/generate';
+        const cards = document.querySelectorAll('.situation-card');
+        const resultBlock = document.getElementById('result-block');
+        const loader = document.getElementById('loader');
+        const excuseText = document.getElementById('excuse-text');
+        const scoreBadge = document.getElementById('score-badge');
+        const scoreDot = document.getElementById('score-dot');
+        const scoreText = document.getElementById('score-text');
+        const copyBtn = document.getElementById('copy-btn');
+
+        cards.forEach(card => {
+            card.addEventListener('click', async () => {
+                cards.forEach(c => c.classList.remove('card-selected'));
+                card.classList.add('card-selected');
+                await generateExcuse(card.dataset.situationId);
+            });
+        });
+
+        async function generateExcuse(situationId) {
+            loader.classList.remove('hidden');
+            resultBlock.classList.add('hidden');
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ situation_id: situationId })
+                });
+                
+                if (!response.ok) throw new Error('Ошибка сервера');
+                
+                const data = await response.json();
+                excuseText.textContent = `«${data.excuse}»`;
+                
+                const score = data.believability_score;
+                scoreText.textContent = `${score}% правдоподобности`;
+                
+                let classes;
+                if (score >= 75) {
+                    classes = { badge: 'bg-emerald-50 text-emerald-700', dot: 'bg-emerald-600' };
+                } else if (score >= 50) {
+                    classes = { badge: 'bg-amber-50 text-amber-700', dot: 'bg-amber-600' };
+                } else {
+                    classes = { badge: 'bg-rose-50 text-rose-700', dot: 'bg-rose-600' };
+                }
+                
+                scoreBadge.className = `inline-flex items-center gap-2 px-3 py-1.5 rounded text-sm font-medium ${classes.badge}`;
+                scoreDot.className = `w-2 h-2 rounded-full ${classes.dot}`;
+                
+                loader.classList.add('hidden');
+                resultBlock.classList.remove('hidden');
+                
+            } catch (error) {
+                console.error('Ошибка:', error);
+                loader.classList.add('hidden');
+                excuseText.textContent = '«Не удалось сгенерировать отмазку. Попробуйте еще раз.»';
+                resultBlock.classList.remove('hidden');
+            }
+        }
+
+        copyBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(excuseText.textContent);
+                const span = copyBtn.querySelector('span');
+                span.textContent = 'Скопировано!';
+                setTimeout(() => { span.textContent = 'Скопировать отмазку'; }, 2000);
+            } catch (err) {
+                console.error('Ошибка копирования:', err);
+            }
+        });
+    </script>
+</body>
+</html>

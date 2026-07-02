@@ -1,0 +1,42 @@
+# API ключи и секреты
+.env
+.env.*
+!.env.example
+opencode.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Тестовые и временные файлы
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.log
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OpenCode
+.opencode/
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Docker (опционально — если не хотите пушить собранные образы)
+# docker-compose.override.yml
